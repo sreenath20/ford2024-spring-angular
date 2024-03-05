@@ -51,7 +51,4 @@ public class Product {
 	public void setManufactureDate(LocalDate manufactureDate) {
 		ManufactureDate = manufactureDate;
 	}
-	
-	
-	
 }

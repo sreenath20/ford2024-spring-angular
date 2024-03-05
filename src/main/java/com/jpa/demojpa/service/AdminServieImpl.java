@@ -1,7 +1,9 @@
 package com.jpa.demojpa.service;
 
 import java.util.List;
+import java.util.Optional;
 
+import com.jpa.demojpa.exceptions.ProductException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +21,11 @@ public class AdminServieImpl implements AdminService{
 	@Autowired
 	private CustomerRepository customerRepository;
 	@Override
-	public Product addProduct(Product product) {
-		
+	public Product addProduct(Product product) throws ProductException {
+		Optional<Product> productOpt = this.productRespository.findByName(product.getName());
+		if(productOpt.isPresent()){
+			throw new ProductException("Product Name Already Exists.");
+		}
 		return this.productRespository.save(product);
 	}
 	@Override

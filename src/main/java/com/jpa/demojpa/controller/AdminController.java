@@ -1,7 +1,10 @@
 package com.jpa.demojpa.controller;
 
 import java.util.List;
+import java.util.Optional;
 
+import com.jpa.demojpa.dao.ProductRespository;
+import com.jpa.demojpa.exceptions.ProductException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,11 +18,23 @@ public class AdminController {
 
 	@Autowired
 	private AdminService adminService;
-	
+
+	@Autowired
+	private ProductRespository productRespository;
 	@PostMapping("product")
-	public Product addNewProduct(@RequestBody Product product) {
+	public Product addNewProduct(@RequestBody Product product)throws ProductException {
 		return this.adminService.addProduct(product);
 		
+	}
+
+	@DeleteMapping("product/{id}")
+	public Product deleteProductById(@PathVariable("id") Integer id){
+
+		Optional<Product> pOpt = this.productRespository.findById(id);
+
+		this.productRespository.deleteById(id);
+
+		return pOpt.get();
 	}
 	
 	@GetMapping("products")
