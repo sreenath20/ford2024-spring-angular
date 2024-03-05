@@ -1,0 +1,9 @@
+
+Q	java:S1250"<This block of commented-out lines of code should be removed.(¤¹£Ó
+V	java:S1253"<This block of commented-out lines of code should be removed.(ÀŞœÙøÿÿÿÿ
+l
+java:S36555"VCall "customerOpt.isPresent()" or "!customerOpt.isEmpty()" before accessing the value.(òäƒé
+j
+java:S36554"TCall "productOpt.isPresent()" or "!productOpt.isEmpty()" before accessing the value.(Üƒ÷ş
+f
+java:S3655("PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(äçöå
