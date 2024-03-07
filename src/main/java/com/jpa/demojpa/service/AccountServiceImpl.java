@@ -41,10 +41,12 @@ public class AccountServiceImpl implements AccountService{
     }
 
     @Override
-    public Account deleteAccountById(Integer id) {
+    public Account deleteAccountById(Integer id) throws  AccountExceptions{
 
         Optional<Account> accountOpt = this.accountRepository.findById(id);
         // exception handling
+		if(accountOpt.isEmpty())
+			throw  new AccountExceptions("Account id not found to delete.");
         this.accountRepository.deleteById(id);
         return accountOpt.get();
     }

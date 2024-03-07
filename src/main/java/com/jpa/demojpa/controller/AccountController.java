@@ -5,6 +5,7 @@ import com.jpa.demojpa.dto.LoginDto;
 import com.jpa.demojpa.entity.Account;
 import com.jpa.demojpa.exceptions.AccountExceptions;
 import com.jpa.demojpa.service.AccountService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,7 @@ public class AccountController {
 
 	// Api to Account registration with email
 	@PostMapping("account")
-	public Account createAccount(@RequestBody Account account) throws AccountExceptions {
+	public Account createAccount(@Valid @RequestBody Account account) throws AccountExceptions {
 		return this.accountService.createAccount(account);
 	}
 
@@ -41,7 +42,7 @@ public class AccountController {
 	}
 
 	@DeleteMapping("account/{id}")
-	public Account deleteAccountById(@PathVariable Integer id) {
+	public Account deleteAccountById(@PathVariable Integer id)throws  AccountExceptions {
 		return this.accountService.deleteAccountById(id);
 	}
 

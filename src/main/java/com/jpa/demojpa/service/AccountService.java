@@ -12,7 +12,7 @@ public interface AccountService {
 
     Account getAccountById(Integer accountId);
 
-    Account deleteAccountById(Integer id);
+    Account deleteAccountById(Integer id)throws  AccountExceptions;
 
     List<Account> getAllAccounts();
 
